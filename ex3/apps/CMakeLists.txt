@@ -9,3 +9,12 @@ add_executable(democ demo.c)
 target_include_directories(democ PRIVATE ${C_INC_DIRS})
 target_link_libraries(democ PRIVATE mixedlang)
 set_target_properties(democ PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
+# Fortran demo to use Fortran module in C++ library.
+add_executable(demof demo.F90)
+target_include_directories(demof PUBLIC ${Fortran_MODULE_DIRECTORY} ${CMAKE_SOURCE_DIR}/include)
+target_link_libraries(demof mixedlang)
+set_target_properties(demof PROPERTIES
+    LINKER_LANGUAGE Fortran
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
+)

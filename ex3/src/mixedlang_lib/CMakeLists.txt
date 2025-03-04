@@ -1,6 +1,10 @@
 # Shared C++ library for mixed language programming demo.
 
-file(GLOB SRC_MIXEDLANG_LIB *.cpp)
+include(FortranCInterface)
+FortranCInterface_HEADER(FC.h MACRO_NAMESPACE "FC_")
+FortranCInterface_VERIFY(CXX)
+
+file(GLOB SRC_MIXEDLANG_LIB *.cpp *.f90)
 
 add_library(mixedlang SHARED ${SRC_MIXEDLANG_LIB})
 target_include_directories(mixedlang PRIVATE ${CXX_INC_DIRS} ${CMAKE_CURRENT_BINARY_DIR})

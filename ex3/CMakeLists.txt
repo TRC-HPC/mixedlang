@@ -28,6 +28,9 @@ list(APPEND CMAKE_C_FLAGS
     -fmacro-prefix-map=${CMAKE_SOURCE_DIR}=.
 )
 
+enable_language(Fortran)
+set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
 # Find any required packages your code might need (such as json)
 # find_package(some_package REQUIRED)
 
