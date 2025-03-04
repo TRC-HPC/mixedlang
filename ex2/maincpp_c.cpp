@@ -1,4 +1,7 @@
-#include "textc.h"
+extern "C" {
+    #include "textc.h"
+}
+
 #include <string>
 
 int main(int argc, char** argv) {
