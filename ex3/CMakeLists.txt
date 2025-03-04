@@ -42,3 +42,4 @@ set(CXX_LINK_DIRS
 )
 
 add_subdirectory(src)
+add_subdirectory(apps)
