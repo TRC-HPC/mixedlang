@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 set(CMAKE_CXX_COMPILER g++)
 
-project(MixedLang VERSION 1.0.0 DESCRIPTION "Mixed Language Programming Example" LANGUAGES CXX)
+project(MixedLang VERSION 1.0.0 DESCRIPTION "Mixed Language Programming Example" LANGUAGES CXX C)
 
 set(CMAKE_CONFIGURATION_TYPES Debug Release)
 set(CMAKE_CONFIGURATION_TYPES "{CMAKE_CONFIGURATION_TYPES}" CACHE STRING
@@ -14,6 +14,7 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "")
     set(CMAKE_BUILD_TYPE "Release")
 endif()
 
+set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -23,12 +24,21 @@ list(APPEND CMAKE_CXX_FLAGS
     -fmacro-prefix-map=${CMAKE_SOURCE_DIR}=.
 )
 
+list(APPEND CMAKE_C_FLAGS
+    -fmacro-prefix-map=${CMAKE_SOURCE_DIR}=.
+)
+
 # Find any required packages your code might need (such as json)
 # find_package(some_package REQUIRED)
 
 # Include the found package include dirs as required
 # Note: Not required if packages support newer style package format (see CXX_LINK_DIRS below)
 set(CXX_INC_DIRS
+    # ${SOME_PACKAGE_INCLUDE_DIR}
+    ${CMAKE_SOURCE_DIR}/include
+)
+
+set(C_INC_DIRS
     # ${SOME_PACKAGE_INCLUDE_DIR}
     ${CMAKE_SOURCE_DIR}/include
 )
