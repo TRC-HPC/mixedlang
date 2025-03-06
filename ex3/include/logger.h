@@ -51,6 +51,9 @@ namespace demo {
             return pretty_function.substr(space, open_paren - space) + "()";
         }
 
+        // Raw logging function.
+        void log(const std::string& level, const std::string& msg);
+
         class DemoLogger {
           public:
             DemoLogger(const std::string& file, const int line,

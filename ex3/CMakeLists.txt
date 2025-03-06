@@ -31,8 +31,8 @@ list(APPEND CMAKE_C_FLAGS
 enable_language(Fortran)
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-# Find any required packages your code might need (such as json)
-# find_package(some_package REQUIRED)
+# Find any required packages your code might need
+find_package(Python COMPONENTS Development.Module REQUIRED)
 
 # Include the found package include dirs as required
 # Note: Not required if packages support newer style package format (see CXX_LINK_DIRS below)
@@ -56,3 +56,10 @@ set(CXX_LINK_DIRS
 
 add_subdirectory(src)
 add_subdirectory(apps)
+
+# Copy the Python modules directory to the build directory
+add_custom_target(py_modules ALL
+    ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/modules/ ${CMAKE_BINARY_DIR}/modules/
+    COMMAND echo "modules copied to build/"
+)

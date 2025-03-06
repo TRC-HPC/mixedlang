@@ -70,6 +70,23 @@ namespace demo {
             return log_headers;
         }
 
+        void log(const std::string& level, const std::string& msg) {
+            LogLevel log_level(LogLevel::INFO);
+            const auto level_itr = str_to_log_level.find(level);
+            if (level_itr != str_to_log_level.end())
+                log_level = level_itr->second;
+
+            if (current_log_level <= log_level) {
+                std::stringstream os;
+                if (log_headers) {
+                    os << "[" << level << "]"
+                    << " ";
+                }
+                os << msg;
+                std::cerr << os.str() << std::endl;
+            }
+        }
+
 
         DemoLogger::DemoLogger(const std::string& file, const int line,
                                const std::string& func, const LogLevel level) :

@@ -1,1 +1,2 @@
 add_subdirectory(mixedlang_lib)
+add_subdirectory(pymixedlang_mod)
