@@ -18,3 +18,10 @@ set_target_properties(demof PROPERTIES
     LINKER_LANGUAGE Fortran
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
+
+# Copy all Python files to the build directory
+add_custom_target(py_scripts ALL
+    ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/apps/py_scripts/ ${CMAKE_BINARY_DIR}
+    COMMAND echo "apps/py_scripts/* copied to build/"
+)
