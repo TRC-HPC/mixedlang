@@ -32,7 +32,7 @@ enable_language(Fortran)
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # Find any required packages your code might need
-find_package(Python COMPONENTS Development.Module REQUIRED)
+find_package(Python COMPONENTS Development.Embed Development.Module REQUIRED)
 
 # Include the found package include dirs as required
 # Note: Not required if packages support newer style package format (see CXX_LINK_DIRS below)
