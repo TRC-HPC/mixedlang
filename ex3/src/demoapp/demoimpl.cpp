@@ -29,6 +29,8 @@ namespace demo {
             py_mgr->add_module_load_path(root_path / "modules");
             // Add root directory too
             py_mgr->add_module_load_path(root_path);
+            // Add path to C++ Python modules
+            //py_mgr->add_module_load_path(root_path / "lib");
         }
 
         const int64_t i = 7;

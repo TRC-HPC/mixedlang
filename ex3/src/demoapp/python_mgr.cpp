@@ -1,4 +1,5 @@
 #include "python_mgr.h"
+#include "module_pymixedlang.h"
 #include "exceptions.h"
 #include "logger.h"
 
@@ -82,6 +83,9 @@ namespace demo {
     PythonMgr::PythonMgr() {
         // Note: Add any built-in modules (such as pymixedlang)
         //       before Py_Initialize.
+        if (PyImport_AppendInittab("pymixedlang", PyInit_pymixedlang) == -1)
+            throw PythonException("PythonMgr::PythonMgr: Could not extend"
+                                  " built-in modules table with module 'pymixedlang'.");
 
         Py_Initialize();
 
